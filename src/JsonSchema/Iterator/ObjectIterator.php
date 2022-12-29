@@ -38,7 +38,7 @@ class ObjectIterator implements \Iterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function current()
+    public function current(): mixed
     {
         $this->initialize();
 
@@ -48,7 +48,7 @@ class ObjectIterator implements \Iterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function next()
+    public function next(): void
     {
         $this->initialize();
         $this->position++;
@@ -57,7 +57,7 @@ class ObjectIterator implements \Iterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function key()
+    public function key(): int
     {
         $this->initialize();
 
@@ -67,7 +67,7 @@ class ObjectIterator implements \Iterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function valid()
+    public function valid(): bool
     {
         $this->initialize();
 
@@ -77,7 +77,7 @@ class ObjectIterator implements \Iterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->initialize();
         $this->position = 0;
@@ -86,7 +86,7 @@ class ObjectIterator implements \Iterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function count(): int
     {
         $this->initialize();
 
