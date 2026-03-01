@@ -37,7 +37,7 @@ abstract class Constraint implements ConstraintInterface
      * @param UriRetriever $uriRetriever
      * @param Factory      $factory
      */
-    public function __construct($checkMode = self::CHECK_MODE_NORMAL, UriRetriever $uriRetriever = null, Factory $factory = null)
+    public function __construct($checkMode = self::CHECK_MODE_NORMAL, ?UriRetriever $uriRetriever = null, ?Factory $factory = null)
     {
         $this->checkMode    = $checkMode;
         $this->uriRetriever = $uriRetriever;
@@ -80,7 +80,7 @@ abstract class Constraint implements ConstraintInterface
     /**
      * {@inheritDoc}
      */
-    public function addError($path, $message, $constraint='', array $more=null)
+    public function addError($path, $message, $constraint='', ?array $more=null)
     {
         $error = array(
             'property' => $path,
