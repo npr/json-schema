@@ -43,7 +43,7 @@ class Factory
     /**
      * @param UriRetriever $uriRetriever
      */
-    public function __construct(UriRetriever $uriRetriever = null)
+    public function __construct(?UriRetriever $uriRetriever = null)
     {
         if (!$uriRetriever) {
             $uriRetriever = new UriRetriever();
