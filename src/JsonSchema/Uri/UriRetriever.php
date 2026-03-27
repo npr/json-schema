@@ -51,12 +51,24 @@ class UriRetriever implements BaseUriRetrieverInterface
             return;
         }
 
-        if (in_array($contentType, array(Validator::SCHEMA_MEDIA_TYPE, 'application/json'))) {
+        // Allow standard schema and JSON content types
+        if (in_array($contentType, array(Validator::SCHEMA_MEDIA_TYPE, 'application/json', 'text/plain'))) {
             return;
         }
 
-        if (substr($uri, 0, 23) == 'http://json-schema.org/') {
-            //HACK; they deliver broken content types
+        // HACK: json-schema.org delivers broken content types (both http and https)
+        if (str_starts_with($uri, 'http://json-schema.org/') || 
+            str_starts_with($uri, 'https://json-schema.org/')) {
+            return true;
+        }
+
+        // Allow file:// URIs without strict content-type checking
+        if (str_starts_with($uri, 'file://')) {
+            return true;
+        }
+
+        // If content type contains 'json', accept it
+        if (str_contains($contentType, 'json')) {
             return true;
         }
 
